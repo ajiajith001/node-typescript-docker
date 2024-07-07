@@ -1,33 +1,36 @@
 {
-	"name": "node_stack_docker",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"build": "rimraf dist && swc ./src -d dist",
-		"start": "node dist/src/index.js"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"volta": {
-		"node": "20.15.0"
-	},
-	"dependencies": {
-		"express": "^4.19.2",
-		"morgan": "^1.10.0",
-		"typescript": "^5.5.3"
-	},
-	"devDependencies": {
-		"@swc/cli": "^0.4.0",
-		"@swc/core": "1.6.13-nightly-20240706.1",
-		"@tsconfig/node20": "^20.1.4",
-		"@types/express": "^4.17.21",
-		"@types/morgan": "^1.9.9",
-		"@types/node": "^20.14.10",
-		"@typescript-eslint/eslint-plugin": "^7.15.0",
-		"@typescript-eslint/parser": "^7.15.0",
-		"eslint": "^9.6.0",
-		"rimraf": "^5.0.8"
-	}
+  "name": "node_stack_docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rimraf dist && swc ./src -d dist",
+    "start": "node dist/src/index.js",
+    "start:docker": "pnpm build && node --inspect=0.0.0.0 dist/src/index.js",
+    "watch": "watchy --no-init-spawn --debounce 1 -w src -- docker compose restart backend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "volta": {
+    "node": "20.15.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.4.0",
+    "@swc/core": "1.6.13-nightly-20240706.1",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/express": "^4.17.21",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.10",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "eslint": "^9.6.0",
+    "rimraf": "^5.0.8",
+    "watchy": "^0.10.2"
+  }
 }
