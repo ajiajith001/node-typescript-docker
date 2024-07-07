@@ -1,0 +1,26 @@
+{
+	"name": "node_stack_docker",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"build": "rimraf dist && swc ./src -d dist",
+		"start": "node dist/src/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"volta": {
+		"node": "20.15.0"
+	},
+	"dependencies": {
+		"typescript": "^5.5.3"
+	},
+	"devDependencies": {
+		"@swc/cli": "^0.4.0",
+		"@swc/core": "1.6.13-nightly-20240706.1",
+		"@tsconfig/node20": "^20.1.4",
+		"@types/node": "^20.14.10",
+		"rimraf": "^5.0.8"
+	}
+}
