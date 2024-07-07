@@ -1,4 +1,11 @@
 services:
+  postgres:
+    image: postgres:15-alpine
+    ports: 
+      - 5432:5432
+    environment:
+      POSTGRES_DB: node_stack_dev
+      POSTGRES_HOST_AUTH_METHOD: trust
   backend:
     build: .
     ports:
@@ -9,5 +16,8 @@ services:
       - /usr/src/app/.pnpm-store
       - /usr/src/app/node_modules
     command: pnpm start:docker
+    depends_on:
+      - postgres
     environment:
-      PORT: 5000
+      DATABASE_URL: postgres://postgres@postgres/node_stack_dev
+      PORT: 5000  
